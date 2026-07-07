@@ -1,9 +1,14 @@
 # Hi, I'm Melissa 👋
 
-This is my personal portfolio website as a Front-end Developer, Software Tester (QA), and Tech Content Creator.
+ > This is my personal portfolio website as a Front-end Developer, Software Tester (QA), and Tech Content Creator.
 
+ ## Link 🔗
 
-## Preview
+Click here for the Live Demo:
+
+[Melissa Costa - Portfolio ✨](https://melissa-portfolio-nu.vercel.app/)
+
+## Preview 👀
 
 | Light Mode |
 |:----------:|
@@ -31,12 +36,12 @@ This portfolio was created to present my projects, technical skills, experiences
 
 ## Current Status 📌
 
-🚧 This portfolio is currently under development.
+`🚧 This portfolio is currently under development.`
 
 New improvements and features are being added continuously.
 
 
-
+---
 
 ###### Made with 💜 By Melissa Costa 
 
