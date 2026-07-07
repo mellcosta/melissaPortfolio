@@ -1,20 +1,42 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# Hi, I'm Melissa 👋
 
-# Run and deploy your AI Studio app
-
-This contains everything you need to run your app locally.
-
-View your app in AI Studio: https://ai.studio/apps/329dea05-19d3-4d3c-8126-00dfc9ae51ae
-
-## Run Locally
-
-**Prerequisites:**  Node.js
+This is my personal portfolio website as a Front-end Developer, Software Tester (QA), and Tech Content Creator.
 
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## Preview
+
+| Light Mode |
+|:----------:|
+
+ ![Light Mode](src/assets/images/light-print.png) 
+
+| Dark Mode |
+|:----------:
+
+ ![Dark Mode](src/assets/images/dark-print.png)
+
+## Overview ✅
+
+This portfolio was created to present my projects, technical skills, experiences, and participation in technology communities and events.
+
+
+## Tech Stack 🚀
+
+- React
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+- Vite
+
+
+## Current Status 📌
+
+🚧 This portfolio is currently under development.
+
+New improvements and features are being added continuously.
+
+
+
+
+###### Made with 💜 By Melissa Costa 
+
