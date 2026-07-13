@@ -11,6 +11,14 @@ import { useTheme } from './ThemeContext';
 import lightProfile from '../assets/images/light.jpg';
 import darkProfile from '../assets/images/dark.jpg';
 
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [elemName: string]: any;
+    }
+  }
+}
+
 interface HeroProps {
   introState?: 'loading' | 'dissolving' | 'done';
 }
@@ -38,10 +46,10 @@ export const Hero: React.FC<HeroProps> = ({ introState = 'done' }) => {
 
   const socialLinks = [
     { icon: <Github className="w-5 h-5" />, url: 'https://github.com/mellcosta' },
-    { icon: <Linkedin className="w-5 h-5" />, url: 'https://www.linkedin.com/' },
-    { icon: <Instagram className="w-5 h-5" />, url: 'https://www.instagram.com/' },
-    { icon: <Youtube className="w-5 h-5" />, url: 'https://youtube.com/' },
-    { icon: <Facebook className="w-5 h-5" />, url: 'https://facebook.com/' },
+    { icon: <Linkedin className="w-5 h-5" />, url: 'https://www.linkedin.com/in/melissa-costa-71300a209/' },
+    { icon: <Instagram className="w-5 h-5" />, url: 'https://www.instagram.com/m3licosta' },
+    { icon: <Youtube className="w-5 h-5" />, url: 'https://www.youtube.com/@m3licosta' },
+    { icon: <Facebook className="w-5 h-5" />, url: 'https://www.facebook.com/profile.php?id=100024281591505' },
   ];
 
   // Dynamic translated greeting
@@ -134,7 +142,7 @@ export const Hero: React.FC<HeroProps> = ({ introState = 'done' }) => {
               className="h-10 sm:h-12 flex items-center mb-6"
             >
               <p className="text-xl sm:text-2xl md:text-3xl font-mono font-medium tracking-tight text-current">
-                <span className={theme === 'light' ? 'text-[#F872EE]' : 'bg-gradient-to-r from-[#60a5fa] via-[#d946ef] to-[#8b5cf6] bg-clip-text text-transparent'}>
+                <span className={theme === 'light' ? 'text-[#F872EE]' : 'bg-linear-to-r from-[#60a5fa] via-[#d946ef] to-[#8b5cf6] bg-clip-text text-transparent'}>
                   {typedText}
                 </span>
                 <motion.span
@@ -171,7 +179,7 @@ export const Hero: React.FC<HeroProps> = ({ introState = 'done' }) => {
                 className={`px-6 py-3 rounded-full text-sm font-semibold active:scale-95 flex items-center gap-2 hover:scale-105 hover:brightness-110 transition-transform duration-100 ease-out ${
                   theme === 'light'
                     ? 'btn-gradient shadow-md'
-                    : 'bg-gradient-to-r from-[#60a5fa] via-[#d946ef] to-[#8b5cf6] text-white shadow-[0_0_20px_rgba(217,70,239,0.35)] hover:shadow-[0_0_28px_rgba(217,70,239,0.6)]'
+                    : 'bg-linear-to-r from-[#60a5fa] via-[#d946ef] to-[#8b5cf6] text-white shadow-[0_0_20px_rgba(217,70,239,0.35)] hover:shadow-[0_0_28px_rgba(217,70,239,0.6)]'
                 }`}
               >
                 {t.hero.cta}
@@ -197,7 +205,7 @@ export const Hero: React.FC<HeroProps> = ({ introState = 'done' }) => {
                   }}
                   className="relative p-[1.5px] rounded-full group overflow-hidden active:scale-95 hover:scale-105 transition-transform duration-100 ease-out flex items-center justify-center"
                 >
-                  <span className="absolute inset-0 bg-gradient-to-r from-[#60a5fa] via-[#d946ef] to-[#8b5cf6]" />
+                  <span className="absolute inset-0 bg-linear-to-r from-[#60a5fa] via-[#d946ef] to-[#8b5cf6]" />
                   <span className="relative px-6 py-3 rounded-full text-sm font-medium bg-[#090111] text-zinc-200 group-hover:bg-transparent group-hover:text-white transition-colors duration-100 ease-out flex items-center gap-2">
                     <FileText className="w-4 h-4 text-pink-400 group-hover:text-white" />
                     <span>{t.hero.viewResume}</span>
@@ -244,13 +252,13 @@ export const Hero: React.FC<HeroProps> = ({ introState = 'done' }) => {
                 animate={introState !== 'loading' ? { scale: 1 } : { scale: 0.95 }}
                 transition={{ duration: 0.4, delay: 0.12, ease: 'easeOut' }}
                 style={{ y: scrollY * 0.05 }}
-                className="relative w-full max-w-[220px] sm:max-w-[280px] md:max-w-[340px] aspect-square shrink-0"
+                className="relative w-full max-w-55 sm:max-w-70 md:max-w-85 aspect-square shrink-0"
               >
                 {/* Blur backdrop effects */}
                 {theme === 'light' ? (
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-r from-[#FFC7F9] via-[#FF80DF] to-[#FD6EFF] blur-2xl opacity-40 scale-105 animate-pulse" />
+                  <div className="absolute inset-0 rounded-full bg-linear-to-r from-[#FFC7F9] via-[#FF80DF] to-[#FD6EFF] blur-2xl opacity-40 scale-105 animate-pulse" />
                 ) : (
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-r from-[#60a5fa] via-[#d946ef] to-[#8b5cf6] blur-3xl opacity-30 scale-105 animate-pulse" />
+                  <div className="absolute inset-0 rounded-full bg-linear-to-r from-[#60a5fa] via-[#d946ef] to-[#8b5cf6] blur-3xl opacity-30 scale-105 animate-pulse" />
                 )}
 
                 {/* Picture frame with float hover and expanding shadow */}

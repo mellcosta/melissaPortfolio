@@ -14,10 +14,10 @@ export const Footer: React.FC = () => {
 
   const socialLinks = [
     { icon: <Github className="w-5 h-5" />, url: 'https://github.com/mellcosta' },
-    { icon: <Linkedin className="w-5 h-5" />, url: 'https://www.linkedin.com/' },
-    { icon: <Instagram className="w-5 h-5" />, url: 'https://www.instagram.com/' },
-    { icon: <Youtube className="w-5 h-5" />, url: 'https://youtube.com/' },
-    { icon: <Facebook className="w-5 h-5" />, url: 'https://facebook.com/' },
+    { icon: <Linkedin className="w-5 h-5" />, url: 'https://www.linkedin.com/in/melissa-costa-71300a209/' },
+    { icon: <Instagram className="w-5 h-5" />, url: 'https://www.instagram.com/m3licosta' },
+    { icon: <Youtube className="w-5 h-5" />, url: 'https://www.youtube.com/@m3licosta' },
+    { icon: <Facebook className="w-5 h-5" />, url: 'https://www.facebook.com/profile.php?id=100024281591505' },
   ];
 
   const currentYear = 2026; // Current execution year context
