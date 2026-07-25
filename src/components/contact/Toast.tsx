@@ -13,12 +13,17 @@ export interface ToastState {
 interface ToastProps {
   toast: ToastState | null;
   onClose: () => void;
+  theme: 'light' | 'dark';
 }
 
-export const Toast: React.FC<ToastProps> = ({ toast, onClose }) => {
-  const tone = toast?.kind === 'success'
-    ? 'border-emerald-500/30 bg-emerald-500/10 text-emerald-100'
-    : 'border-rose-500/30 bg-rose-500/10 text-rose-100';
+export const Toast: React.FC<ToastProps> = ({ toast, onClose, theme }) => {
+  const tone = theme === 'light'
+    ? toast?.kind === 'success'
+      ? 'border-emerald-500/40 bg-emerald-50 text-emerald-800'
+      : 'border-rose-500/40 bg-rose-50 text-rose-800'
+    : toast?.kind === 'success'
+      ? 'border-emerald-500/30 bg-emerald-500/10 text-emerald-100'
+      : 'border-rose-500/30 bg-rose-500/10 text-rose-100';
 
   const Icon = toast?.kind === 'success' ? CheckCircle2 : AlertTriangle;
 
@@ -30,7 +35,7 @@ export const Toast: React.FC<ToastProps> = ({ toast, onClose }) => {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 12, scale: 0.96 }}
           transition={{ duration: 0.22 }}
-          className={`fixed bottom-5 right-5 z-60 flex max-w-sm items-start gap-3 rounded-2xl border px-4 py-3 shadow-2xl backdrop-blur-md ${tone}`}
+          className={`fixed bottom-5 right-5 z-100 flex max-w-sm items-start gap-3 rounded-2xl border px-4 py-3 shadow-2xl backdrop-blur-md ${tone}`}
           role="status"
           aria-live="polite"
         >

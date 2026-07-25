@@ -468,7 +468,7 @@ export const Contact: React.FC = () => {
         </div>
       </div>
 
-      <Toast toast={toast} onClose={() => setToast(null)} />
+      <Toast toast={toast} onClose={() => setToast(null)} theme={theme} />
     </section>
   );
 };
