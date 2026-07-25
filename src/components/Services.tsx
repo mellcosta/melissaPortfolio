@@ -173,7 +173,7 @@ export const Services: React.FC = () => {
         </div>
 
         {/* Responsive Grid: 1 row desktop (lg:cols-4), 2x2 tablet (sm:cols-2), stacked mobile (cols-1) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 justify-items-center">
           {servicesList.map((service, idx) => (
             <motion.div
               key={idx}
@@ -181,7 +181,7 @@ export const Services: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.05, ease: 'easeOut' }}
-              className={`group relative overflow-hidden pt-6 px-5 pb-0 rounded-2xl border transition-transform duration-150 hover:-translate-y-1 hover:rotate-[-0.3deg] ${
+              className={`group relative overflow-hidden max-w-85 pt-6 px-5 pb-0 rounded-2xl border transition-transform duration-150 hover:-translate-y-1 hover:rotate-[-0.3deg] ${
                 theme === 'light'
                   ? 'glass border-[#F872EE]/30'
                   : 'dark-glass border-zinc-800/80'

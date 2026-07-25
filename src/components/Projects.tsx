@@ -158,7 +158,7 @@ export const Projects: React.FC = () => {
         {/* Projects Cards Grid */}
         <motion.div
           layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 sm:gap-x-8 sm:gap-y-14"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 sm:gap-x-8 sm:gap-y-14 justify-items-center"
         >
           <AnimatePresence mode="popLayout">
             {filteredProjects.map((project) => {
@@ -184,7 +184,7 @@ export const Projects: React.FC = () => {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.95, y: 10 }}
                   transition={{ duration: 0.22 }}
-                  className="flex flex-col h-full transition-all duration-150"
+                  className="flex flex-col max-w-[90%] h-full transition-all duration-150"
                 >
                   <div className="flex flex-col h-full">
                     {/* Large project image at the top */}

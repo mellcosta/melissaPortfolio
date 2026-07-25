@@ -10,6 +10,7 @@ import { useLanguage } from './LanguageContext';
 import { useTheme } from './ThemeContext';
 import lightProfile from '../assets/images/light.jpg';
 import darkProfile from '../assets/images/dark.jpg';
+import resumeEn from '../assets/docs/Melissa_Costa_Resume_EN.pdf';
 
 declare global {
   namespace JSX {
@@ -43,6 +44,15 @@ export const Hero: React.FC<HeroProps> = ({ introState = 'done' }) => {
   const darkProfilePhoto = darkProfile;
 
   const currentProfilePhoto = theme === 'light' ? lightProfilePhoto : darkProfilePhoto;
+
+  const resumeByLanguage: Partial<Record<string, string>> = {
+    en: resumeEn,
+  };
+  const hasLanguageResume = Boolean(resumeByLanguage[language]);
+  const resumeHref = resumeByLanguage[language] ?? resumeEn;
+  const resumeDownloadName = hasLanguageResume
+    ? `Melissa_Costa_Resume_${language.toUpperCase()}.pdf`
+    : 'Melissa_Costa_Resume_EN.pdf';
 
   const socialLinks = [
     { icon: <Github className="w-5 h-5" />, url: 'https://github.com/mellcosta' },
@@ -186,11 +196,8 @@ export const Hero: React.FC<HeroProps> = ({ introState = 'done' }) => {
               </a>
               {theme === 'light' ? (
                 <a
-                  href="#resume"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    alert(language === 'pt' ? 'O currículo está sendo atualizado!' : 'Resume is currently being updated!');
-                  }}
+                  href={resumeHref}
+                  download={resumeDownloadName}
                   className="px-6 py-3 rounded-full text-sm font-medium border border-[#F872EE] text-[#4A3F3A] hover:bg-[#F872EE]/10 hover:scale-105 active:scale-95 transition-colors transition-transform duration-100 ease-out flex items-center gap-2"
                 >
                   <FileText className="w-4 h-4 text-[#F872EE]" />
@@ -198,11 +205,8 @@ export const Hero: React.FC<HeroProps> = ({ introState = 'done' }) => {
                 </a>
               ) : (
                 <a
-                  href="#resume"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    alert(language === 'pt' ? 'O currículo está sendo atualizado!' : 'Resume is currently being updated!');
-                  }}
+                  href={resumeHref}
+                  download={resumeDownloadName}
                   className="relative p-[1.5px] rounded-full group overflow-hidden active:scale-95 hover:scale-105 transition-transform duration-100 ease-out flex items-center justify-center"
                 >
                   <span className="absolute inset-0 bg-linear-to-r from-[#60a5fa] via-[#d946ef] to-[#8b5cf6]" />
