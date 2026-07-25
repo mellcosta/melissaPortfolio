@@ -184,7 +184,7 @@ export const Projects: React.FC = () => {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.95, y: 10 }}
                   transition={{ duration: 0.22 }}
-                  className="flex flex-col max-w-[90%] h-full transition-all duration-150"
+                  className="flex flex-col w-full max-w-[400px] h-full mx-auto transition-all duration-150"
                 >
                   <div className="flex flex-col h-full">
                     {/* Large project image at the top */}
@@ -193,7 +193,7 @@ export const Projects: React.FC = () => {
                         href={project.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={`group/img relative block aspect-[4/3] min-w-[300px] h-[200px] overflow-hidden rounded-3xl bg-black/5 mb-5 shadow-sm transition-all duration-300 hover:-translate-y-2 ${
+                        className={`group/img relative block aspect-4/3 w-full h-50 overflow-hidden rounded-3xl bg-black/5 mb-5 shadow-sm transition-all duration-300 hover:-translate-y-2 ${
                           theme === 'light'
                             ? 'hover:shadow-[0_12px_28px_rgba(248,114,238,0.22)]'
                             : 'hover:shadow-[0_12px_28px_rgba(168,85,247,0.22)]'
