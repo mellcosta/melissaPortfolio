@@ -85,14 +85,14 @@ export const translations: Record<Language, TranslationSchema> = {
       events: 'Events',
       projects: 'Projects',
       contact: 'Contact',
-      resume: 'View Resume',
+      resume: 'Donwload CV',
     },
     hero: {
       title: 'Frontend Developer',
       bio: "I build modern websites, I'm learning Quality Assurance, and I create tech content.",
       cta: 'Get in Touch',
       typingRoles: ['Front-end Developer', 'Software Tester (QA)', 'Content Creator'],
-      viewResume: 'View Resume',
+      viewResume: 'Download CV',
     },
     about: {
       title: 'About Me',

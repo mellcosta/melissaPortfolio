@@ -10,7 +10,9 @@ import { useLanguage } from './LanguageContext';
 import { useTheme } from './ThemeContext';
 import lightProfile from '../assets/images/light.jpg';
 import darkProfile from '../assets/images/dark.jpg';
-import resumeEn from '../assets/docs/Melissa_Costa_Resume_EN.pdf';
+import { ResumeModal } from './ResumeModal';
+import resumeFrontend from '../assets/docs/Melissa_Costa_Frontend_Resume_EN.pdf';
+import resumeQa from '../assets/docs/Melissa_Costa_QA_Resume_EN.pdf';
 
 declare global {
   namespace JSX {
@@ -45,14 +47,24 @@ export const Hero: React.FC<HeroProps> = ({ introState = 'done' }) => {
 
   const currentProfilePhoto = theme === 'light' ? lightProfilePhoto : darkProfilePhoto;
 
-  const resumeByLanguage: Partial<Record<string, string>> = {
-    en: resumeEn,
-  };
-  const hasLanguageResume = Boolean(resumeByLanguage[language]);
-  const resumeHref = resumeByLanguage[language] ?? resumeEn;
-  const resumeDownloadName = hasLanguageResume
-    ? `Melissa_Costa_Resume_${language.toUpperCase()}.pdf`
-    : 'Melissa_Costa_Resume_EN.pdf';
+const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
+
+  const resumeOptions = [
+    {
+      key: 'frontend' as const,
+      title: 'Frontend Developer',
+      subtitle: 'React, Next.js, TypeScript',
+      href: resumeFrontend,
+      downloadName: 'Melissa_Costa_Frontend_Resume_EN.pdf',
+    },
+    {
+      key: 'qa' as const,
+      title: 'QA / Software Tester',
+      subtitle: 'Manual Testing, STLC, Bug Reports',
+      href: resumeQa,
+      downloadName: 'Melissa_Costa_QA_Resume_EN.pdf',
+    },
+  ];
 
   const socialLinks = [
     { icon: <Github className="w-5 h-5" />, url: 'https://github.com/mellcosta' },
@@ -195,18 +207,16 @@ export const Hero: React.FC<HeroProps> = ({ introState = 'done' }) => {
                 {t.hero.cta}
               </a>
               {theme === 'light' ? (
-                <a
-                  href={resumeHref}
-                  download={resumeDownloadName}
+                <button
+                  onClick={() => setIsResumeModalOpen(true)}
                   className="px-6 py-3 rounded-full text-sm font-medium border border-[#F872EE] text-[#4A3F3A] hover:bg-[#F872EE]/10 hover:scale-105 active:scale-95 transition-colors transition-transform duration-100 ease-out flex items-center gap-2"
                 >
                   <FileText className="w-4 h-4 text-[#F872EE]" />
                   <span>{t.hero.viewResume}</span>
-                </a>
+                </button>
               ) : (
-                <a
-                  href={resumeHref}
-                  download={resumeDownloadName}
+                <button
+                  onClick={() => setIsResumeModalOpen(true)}
                   className="relative p-[1.5px] rounded-full group overflow-hidden active:scale-95 hover:scale-105 transition-transform duration-100 ease-out flex items-center justify-center"
                 >
                   <span className="absolute inset-0 bg-linear-to-r from-[#60a5fa] via-[#d946ef] to-[#8b5cf6]" />
@@ -214,7 +224,7 @@ export const Hero: React.FC<HeroProps> = ({ introState = 'done' }) => {
                     <FileText className="w-4 h-4 text-pink-400 group-hover:text-white" />
                     <span>{t.hero.viewResume}</span>
                   </span>
-                </a>
+                </button>
               )}
             </motion.div>
  
@@ -301,6 +311,11 @@ export const Hero: React.FC<HeroProps> = ({ introState = 'done' }) => {
 
         </div>
       </div>
+    <ResumeModal
+        open={isResumeModalOpen}
+        onClose={() => setIsResumeModalOpen(false)}
+        options={resumeOptions}
+      />
     </section>
   );
 };
