@@ -96,7 +96,7 @@ export const Projects: React.FC = () => {
 
   const filteredProjects = projectsData.filter((project) => {
     if (activeCategory === 'featured') {
-      return ['rocketflix', 'spotify-clone', 'devlinks'].includes(project.id);
+      return ['smartcv', 'rocketflix', 'spotify-clone', 'devlinks'].includes(project.id);
     }
     if (activeCategory === 'in-progress') {
       return project.isLive === false;
@@ -110,7 +110,7 @@ export const Projects: React.FC = () => {
   return (
     <section id="projects" className="py-10 sm:py-14 md:py-16 lg:py-20 relative overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Section Header */}
         <div className="text-center mb-16 max-w-2xl mx-auto">
           <motion.h2
@@ -118,17 +118,15 @@ export const Projects: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.35, delay: 0.05 }}
-            className={`font-serif text-3xl sm:text-4xl md:text-5xl font-bold mt-1 ${
-              theme === 'light' ? 'text-[#4A3F3A]' : 'text-white'
-            }`}
+            className={`font-serif text-3xl sm:text-4xl md:text-5xl font-bold mt-1 ${theme === 'light' ? 'text-[#4A3F3A]' : 'text-white'
+              }`}
           >
             {t.projects.title}
           </motion.h2>
-          <div className={`w-24 h-1 mx-auto mt-4 rounded-full ${
-            theme === 'light'
-              ? 'bg-gradient-to-r from-[#FFC7F9] via-[#FF80DF] to-[#FD6EFF]'
-              : 'bg-gradient-to-r from-[#60a5fa] via-[#d946ef] to-[#8b5cf6]'
-          }`} />
+          <div className={`w-24 h-1 mx-auto mt-4 rounded-full ${theme === 'light'
+            ? 'bg-gradient-to-r from-[#FFC7F9] via-[#FF80DF] to-[#FD6EFF]'
+            : 'bg-gradient-to-r from-[#60a5fa] via-[#d946ef] to-[#8b5cf6]'
+            }`} />
         </div>
 
         {/* Filter Navigation Bar */}
@@ -139,15 +137,14 @@ export const Projects: React.FC = () => {
               <button
                 key={category}
                 onClick={() => setActiveCategory(category)}
-                className={`px-5 py-2.5 rounded-full font-mono text-xs font-semibold transition-all duration-150 relative hover:scale-105 active:scale-95 ${
-                  isActive
-                    ? theme === 'light'
-                      ? 'bg-gradient-to-r from-[#FFC7F9] via-[#FF80DF] to-[#FD6EFF] text-[#4A3F3A] shadow-md'
-                      : 'bg-purple-500 text-white shadow-[0_0_15px_rgba(168,85,247,0.35)]'
-                    : theme === 'light'
-                      ? 'bg-white/65 text-[#8B7D74] hover:text-[#4A3F3A] hover:bg-[#F872EE]/10 border border-[#F872EE]/20'
-                      : 'bg-[#120B1F]/40 text-zinc-400 hover:text-white hover:bg-white/5 border border-zinc-800'
-                }`}
+                className={`px-5 py-2.5 rounded-full font-mono text-xs font-semibold transition-all duration-150 relative hover:scale-105 active:scale-95 ${isActive
+                  ? theme === 'light'
+                    ? 'bg-gradient-to-r from-[#FFC7F9] via-[#FF80DF] to-[#FD6EFF] text-[#4A3F3A] shadow-md'
+                    : 'bg-purple-500 text-white shadow-[0_0_15px_rgba(168,85,247,0.35)]'
+                  : theme === 'light'
+                    ? 'bg-white/65 text-[#8B7D74] hover:text-[#4A3F3A] hover:bg-[#F872EE]/10 border border-[#F872EE]/20'
+                    : 'bg-[#120B1F]/40 text-zinc-400 hover:text-white hover:bg-white/5 border border-zinc-800'
+                  }`}
               >
                 {labels[category]}
               </button>
@@ -171,6 +168,7 @@ export const Projects: React.FC = () => {
                 'login-page': 'https://github.com/mellcosta/desafiosRocketseat/tree/main/intermediario/login',
                 'portfolio-previous': 'https://github.com/mellcosta',
                 'countdown': 'https://github.com/mellcosta/desafiosRocketseat/tree/main/intermediario/countdown',
+                'smartcv': 'https://github.com/mellcosta/SmartCV',
               };
 
               const isInProgress = project.isLive === false;
@@ -193,11 +191,10 @@ export const Projects: React.FC = () => {
                         href={project.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={`group/img relative block aspect-4/3 w-full h-50 overflow-hidden rounded-3xl bg-black/5 mb-5 shadow-sm transition-all duration-300 hover:-translate-y-2 ${
-                          theme === 'light'
-                            ? 'hover:shadow-[0_12px_28px_rgba(248,114,238,0.22)]'
-                            : 'hover:shadow-[0_12px_28px_rgba(168,85,247,0.22)]'
-                        }`}
+                        className={`group/img relative block aspect-4/3 w-full h-50 overflow-hidden rounded-3xl bg-black/5 mb-5 shadow-sm transition-all duration-300 hover:-translate-y-2 ${theme === 'light'
+                          ? 'hover:shadow-[0_12px_28px_rgba(248,114,238,0.22)]'
+                          : 'hover:shadow-[0_12px_28px_rgba(168,85,247,0.22)]'
+                          }`}
                       >
                         <img
                           src={project.image}
@@ -207,18 +204,17 @@ export const Projects: React.FC = () => {
                         />
                         {/* Soft overlay gradient */}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-40 pointer-events-none" />
-                        
+
                         {/* Hover External Link Indicator badge */}
                         <div className="absolute top-4 right-4 p-2 rounded-full bg-black/55 backdrop-blur-md text-white opacity-0 group-hover/img:opacity-100 transition-opacity duration-200 shadow-sm">
                           <ExternalLink className="w-3.5 h-3.5" />
                         </div>
                       </a>
                     ) : (
-                      <div className={`group/img relative aspect-[4/3] min-w-[300px] h-[200px] overflow-hidden rounded-3xl bg-black/5 mb-5 shadow-sm transition-all duration-300 hover:-translate-y-2 ${
-                        theme === 'light'
-                          ? 'hover:shadow-[0_12px_28px_rgba(248,114,238,0.22)]'
-                          : 'hover:shadow-[0_12px_28px_rgba(168,85,247,0.22)]'
-                      }`}>
+                      <div className={`group/img relative aspect-[4/3] min-w-[300px] h-[200px] overflow-hidden rounded-3xl bg-black/5 mb-5 shadow-sm transition-all duration-300 hover:-translate-y-2 ${theme === 'light'
+                        ? 'hover:shadow-[0_12px_28px_rgba(248,114,238,0.22)]'
+                        : 'hover:shadow-[0_12px_28px_rgba(168,85,247,0.22)]'
+                        }`}>
                         <img
                           src={project.image}
                           alt={project.title}
@@ -237,11 +233,10 @@ export const Projects: React.FC = () => {
                     {/* Project header containing Title & GitHub Link */}
                     <div className="flex items-center justify-between gap-3 mb-2">
                       <h3
-                        className={`font-serif text-xl font-bold transition-all duration-200 ease-out inline-block hover:translate-x-1 ${
-                          theme === 'light'
-                            ? 'text-[#4A3F3A] hover:text-[#F872EE]'
-                            : 'text-white hover:text-purple-400'
-                        }`}
+                        className={`font-serif text-xl font-bold transition-all duration-200 ease-out inline-block hover:translate-x-1 ${theme === 'light'
+                          ? 'text-[#4A3F3A] hover:text-[#F872EE]'
+                          : 'text-white hover:text-purple-400'
+                          }`}
                       >
                         {project.link && !isInProgress ? (
                           <a
@@ -260,11 +255,10 @@ export const Projects: React.FC = () => {
                           href={githubUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className={`p-2 rounded-full border transition-transform duration-100 ease-out hover:scale-110 active:scale-95 flex items-center justify-center shrink-0 ${
-                            theme === 'light'
-                              ? 'border-[#F872EE]/30 text-[#4A3F3A] hover:bg-[#F872EE]/10'
-                              : 'border-zinc-800 text-zinc-300 hover:text-white hover:bg-white/5'
-                          }`}
+                          className={`p-2 rounded-full border transition-transform duration-100 ease-out hover:scale-110 active:scale-95 flex items-center justify-center shrink-0 ${theme === 'light'
+                            ? 'border-[#F872EE]/30 text-[#4A3F3A] hover:bg-[#F872EE]/10'
+                            : 'border-zinc-800 text-zinc-300 hover:text-white hover:bg-white/5'
+                            }`}
                           title="GitHub Code"
                         >
                           <Github className="w-4 h-4" />
@@ -274,9 +268,8 @@ export const Projects: React.FC = () => {
 
                     {/* Short description */}
                     <p
-                      className={`text-sm leading-relaxed mb-4 line-clamp-3 ${
-                        theme === 'light' ? 'text-[#8B7D74]' : 'text-zinc-400'
-                      }`}
+                      className={`text-sm leading-relaxed mb-4 line-clamp-3 ${theme === 'light' ? 'text-[#8B7D74]' : 'text-zinc-400'
+                        }`}
                     >
                       {project.description}
                     </p>
@@ -288,11 +281,10 @@ export const Projects: React.FC = () => {
                           key={tIdx}
                           whileHover={{ y: -3, scale: 1.05 }}
                           transition={{ type: 'spring', stiffness: 400, damping: 15 }}
-                          className={`text-[9px] font-mono px-2 py-0.5 rounded-md border tracking-wider select-none uppercase cursor-default transition-colors duration-150 ${
-                            theme === 'light'
-                              ? 'border-[#F872EE]/20 bg-[#F872EE]/5 text-[#8B7D74] hover:border-[#F872EE]/60 hover:bg-[#F872EE]/10 hover:text-[#F872EE]'
-                              : 'border-zinc-800 bg-[#120B1F]/30 text-zinc-400 hover:border-purple-500/50 hover:bg-purple-500/10 hover:text-purple-400'
-                          }`}
+                          className={`text-[9px] font-mono px-2 py-0.5 rounded-md border tracking-wider select-none uppercase cursor-default transition-colors duration-150 ${theme === 'light'
+                            ? 'border-[#F872EE]/20 bg-[#F872EE]/5 text-[#8B7D74] hover:border-[#F872EE]/60 hover:bg-[#F872EE]/10 hover:text-[#F872EE]'
+                            : 'border-zinc-800 bg-[#120B1F]/30 text-zinc-400 hover:border-purple-500/50 hover:bg-purple-500/10 hover:text-purple-400'
+                            }`}
                         >
                           {tag}
                         </motion.span>

@@ -13,6 +13,7 @@ import igniteLdsImg from '../assets/projects/ignite-lds.png';
 import loginPageImg from '../assets/projects/loginPage.png';
 import portfolioImg from '../assets/projects/portfolio.png';
 import countdownImg from '../assets/projects/countdown.png';
+import smartcvImg from '../assets/projects/smartcv.png';
 
 export const projectsData: ProjectItem[] = [
   // Live Projects
@@ -24,6 +25,15 @@ export const projectsData: ProjectItem[] = [
     isLive: true,
     image: rocketflixImg,
     link: 'https://mellcosta.github.io/desafiosRocketseat/avancado/rocketflix/rocketflix.html'
+  },
+  {
+    id: 'smartcv',
+    title: 'SmartCV',
+    description: 'AI-powered resume tailoring platform built with Next.js, Tailwind CSS, Gemini and Firebase.',
+    tags: ['Next.js', 'Tailwind CSS', 'Gemini', 'Firebase'],
+    isLive: true,
+    image: smartcvImg,
+    link: 'https://smart-cv-orcin.vercel.app/'
   },
   {
     id: 'spotify-clone',
@@ -89,7 +99,17 @@ export const projectsData: ProjectItem[] = [
     link: 'https://mellcosta.github.io/desafiosRocketseat/intermediario/countdown/countdown.html'
   },
 
+
   // In Progress Projects
+
+  {
+    id: 'nomi',
+    title: 'Nomi',
+    description: 'Interactive learning platform with AI-powered quizzes and multilingual support.',
+    tags: ['React.js', 'TypeScript', 'Tailwind CSS', 'AI'],
+    isLive: false,
+    image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80'
+  },
   {
     id: 'menio',
     title: 'Menio',
