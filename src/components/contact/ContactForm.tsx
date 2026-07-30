@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { motion } from 'motion/react';
 import { Loader2, Mail, Send } from 'lucide-react';
 
@@ -38,6 +38,23 @@ export const ContactForm: React.FC<ContactFormProps> = ({
   onSubmit,
   isSubmitting,
 }) => {
+  const honeypotRef = useRef<HTMLInputElement>(null);
+  const COOLDOWN_MS = 60_000; // EmailJS free plan can't restrict by domain, so throttle client-side too
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    if (honeypotRef.current?.value) {
+      event.preventDefault();
+      return;
+    }
+    const lastSent = Number(localStorage.getItem('contactSentAt') || 0);
+    if (Date.now() - lastSent < COOLDOWN_MS) {
+      event.preventDefault();
+      return;
+    }
+    localStorage.setItem('contactSentAt', String(Date.now()));
+    onSubmit(event);
+  };
+
   const fieldClassName =
     theme === 'light'
       ? 'bg-[#FDFBF7]/50 border-[#F872EE]/30 focus:border-[#F872EE] focus:bg-white text-[#4A3F3A]'
@@ -51,18 +68,27 @@ export const ContactForm: React.FC<ContactFormProps> = ({
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.35 }}
-      className={`lg:col-span-6 p-6 sm:p-8 rounded-3xl border ${
-        theme === 'light'
+      className={`lg:col-span-6 p-6 sm:p-8 rounded-3xl border ${theme === 'light'
           ? 'bg-[#FDFBF7]/80 border-[#F872EE]/30 shadow-md'
           : 'bg-[#120B1F]/35 border-zinc-800/80 shadow-2xl'
-      }`}
+        }`}
     >
       <h3 className={`text-lg font-serif font-bold mb-6 flex items-center gap-2 ${theme === 'light' ? 'text-[#4A3F3A]' : 'text-white'}`}>
         <Mail className={`w-5 h-5 ${theme === 'light' ? 'text-[#F872EE]' : 'text-purple-500'}`} />
         <span>{title}</span>
       </h3>
 
-      <form onSubmit={onSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <input
+          type="text"
+          name="company"
+          ref={honeypotRef}
+          tabIndex={-1}
+          autoComplete="off"
+          aria-hidden="true"
+          style={{ position: 'absolute', left: '-9999px', width: '1px', height: '1px', opacity: 0 }}
+        />
+
         <div>
           <label className={`block text-xs font-mono uppercase tracking-wider mb-1.5 ${labelClassName}`}>
             {nameLabel} *
@@ -105,11 +131,10 @@ export const ContactForm: React.FC<ContactFormProps> = ({
         <button
           type="submit"
           disabled={isSubmitting}
-          className={`w-full py-3.5 mt-2 rounded-full font-semibold text-sm transition-all duration-150 active:scale-95 hover:scale-105 hover:brightness-110 flex items-center justify-center gap-2 ${
-            theme === 'light'
+          className={`w-full py-3.5 mt-2 rounded-full font-semibold text-sm transition-all duration-150 active:scale-95 hover:scale-105 hover:brightness-110 flex items-center justify-center gap-2 ${theme === 'light'
               ? 'btn-gradient shadow-md'
               : 'bg-[#8b5cf6] text-white shadow-[0_0_20px_rgba(217,70,239,0.35)] hover:shadow-[0_0_28px_rgba(217,70,239,0.6)]'
-          } ${isSubmitting ? 'cursor-not-allowed opacity-90' : ''}`}
+            } ${isSubmitting ? 'cursor-not-allowed opacity-90' : ''}`}
         >
           {isSubmitting ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}
           <span>{isSubmitting ? sendingLabel : submitLabel}</span>
