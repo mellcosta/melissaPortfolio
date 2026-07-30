@@ -11,6 +11,8 @@
     "lint": "tsc --noEmit"
   },
   "dependencies": {
+    "@calcom/embed-core": "^1.5.3",
+    "@calcom/embed-react": "^1.5.3",
     "@emailjs/browser": "^4.4.1",
     "@google/genai": "^2.4.0",
     "@tailwindcss/vite": "^4.1.14",
